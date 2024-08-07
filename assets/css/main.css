@@ -1,0 +1,24 @@
+/* wrapper for page content */
+#wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Sidebar Styling */
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: 322px;
+  background-color: rgb(114, 114, 114);
+}
+
+.list-group {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+/* Page content styling*/
+
+#page-content-wrapper {
+  width: 100%;
+  padding-top: 20px;
+}
