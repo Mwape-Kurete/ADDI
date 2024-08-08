@@ -15,6 +15,7 @@
 <body>
     <?php session_start(); ?>
     <div class="d-flex" id="wrapper">
+
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
             <div class="sidebar-heading" id="navHeader">ADDI</div>

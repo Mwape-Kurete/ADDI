@@ -5,8 +5,8 @@
         <h1>Event and Asks Tabs Here</h1>
     </div>
     <div class="col-2 activityPanel">
-        <h1>Activity Panel Here</h1>
+        <?php include 'includes/activity_panel.php'; ?>
     </div>
 </div>
 
-<?php include 'includes/footer.php' ?>
+<?php include 'includes/footer.php'; ?>
