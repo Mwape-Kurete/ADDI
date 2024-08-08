@@ -19,17 +19,17 @@
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
             <div class="sidebar-heading" id="navHeader">ADDI</div>
             <div class="list-group list-group-flush">
-                <a href="index.php" class="list-group-item list-group-item-action">Home</a>
-                <a href="pages/ask.php" class="list-group-item list-group-item-action">Ask Around</a>
-                <a href="pages/share.php" class="list-group-item list-group-item-action">Share Event</a>
-                <a href="pages/profile.php" class="list-group-item list-group-item-action">Profile</a>
+                <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
+                <a href="/ADDI/pages/ask.php" class="list-group-item list-group-item-action">Ask Around</a>
+                <a href="/ADDI/pages/share.php" class="list-group-item list-group-item-action">Share Event</a>
+                <a href="/ADDI/pages/profile.php" class="list-group-item list-group-item-action">Profile</a>
 
 
                 <?php if (isset($_SESSION['username'])) : ?>
-                    <a href="pages/login.php" class="btn btn-light list-group-item-action mb-2">Logout</a>
+                    <a href="/ADDI/pages/login.php" class="btn btn-light list-group-item-action mb-2">Logout</a>
                 <?php else : ?>
-                    <a href="pages/login.php" class="btn btn-light list-group-item-action mb-2">Login</a>
-                    <a href="pages/register.php" class="btn btn-light list-group-item-action mb-2">Create Account</a>
+                    <a href="/ADDI/pages/login.php" class="btn btn-light list-group-item-action mb-2">Login</a>
+                    <a href="/ADDI/pages/register.php" class="btn btn-light list-group-item-action mb-2">Create Account</a>
                 <?php endif; ?>
             </div>
         </div>
