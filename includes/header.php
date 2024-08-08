@@ -26,7 +26,7 @@
 
 
                 <?php if (isset($_SESSION['username'])) : ?>
-                    <a href="/ADDI/pages/login.php" class="btn btn-light list-group-item-action mb-2">Logout</a>
+                    <a href="/ADDI/pages/logout.php" class="btn btn-light list-group-item-action mb-2">Logout</a>
                 <?php else : ?>
                     <a href="/ADDI/pages/login.php" class="btn btn-light list-group-item-action mb-2">Login</a>
                     <a href="/ADDI/pages/register.php" class="btn btn-light list-group-item-action mb-2">Create Account</a>

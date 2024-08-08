@@ -1,5 +1,5 @@
 <?php
-session_start(); //starts / resumes a session
+//session_start(); //starts / resumes a session -> this is already set in my header file
 require '../includes/db.php'; //ensures that the db.php file (containing our connection is placed)
 
 //checking if the request method is POST, which indicates the form has been submitted
