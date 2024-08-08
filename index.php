@@ -1,10 +1,10 @@
 <?php include 'includes/header.php'; ?>
 
 <div class="row">
-    <div class="col main-pageContent">
+    <div class="col-10 main-pageContent">
         <h1>Event and Asks Tabs Here</h1>
     </div>
-    <div class="col-2 activityPanel">
+    <div class="col activityPanel">
         <?php include 'includes/activity_panel.php'; ?>
     </div>
 </div>

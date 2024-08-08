@@ -18,7 +18,9 @@
 
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
-            <div class="sidebar-heading" id="navHeader">ADDI</div>
+            <div class="sidebar-heading" id="navHeader">
+                <h3>ADDI</h3>
+            </div>
             <div class="list-group list-group-flush">
                 <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
                 <a href="/ADDI/pages/ask.php" class="list-group-item list-group-item-action">Ask Around</a>

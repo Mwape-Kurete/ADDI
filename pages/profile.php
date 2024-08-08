@@ -5,7 +5,7 @@
         <h1>My Answered, My Asks, My Events, My Saved Tabs go here</h1>
     </div>
     <div class="col-2 activityPanel">
-        <h1>profile Panel Here</h1>
+        <?php include '../includes/profile_panel.php' ?>
     </div>
 </div>
 

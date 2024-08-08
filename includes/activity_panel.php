@@ -1,6 +1,8 @@
-<!-- Sidebar -->
-<div class="border-right sidebar-cont" id="activityPanel-wrapper">
-    <div class="sidebar-heading" id="navHeader">Activity</div>
+<!-- Activity Panel -->
+<div class="activity-panel" id="activityPanel-wrapper">
+    <div class="activityPanel-heading" id="activeHeader">
+        <h3>Activity</h3>
+    </div>
     <div class="list-group list-group-flush">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">An item</li>
@@ -11,4 +13,4 @@
         </ul>
     </div>
 </div>
-<!-- /#sidebar-wrapper -->
+<!-- /#activityPanel-wrapper -->
