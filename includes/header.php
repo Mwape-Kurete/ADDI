@@ -17,12 +17,12 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
-            <div class="sidebar-heading" id="naveHeader">ADDI</div>
+            <div class="sidebar-heading" id="navHeader">ADDI</div>
             <div class="list-group list-group-flush">
-                <a href="index.php" class="list-group-item list-group-item-action bg-light">Home</a>
-                <a href="pages/ask.php" class="list-group-item list-group-item-action bg-light">Ask Around</a>
-                <a href="pages/share.php" class="list-group-item list-group-item-action bg-light">Share Event</a>
-                <a href="pages/profile.php" class="list-group-item list-group-item-action bg-light">Profile</a>
+                <a href="index.php" class="list-group-item list-group-item-action">Home</a>
+                <a href="pages/ask.php" class="list-group-item list-group-item-action">Ask Around</a>
+                <a href="pages/share.php" class="list-group-item list-group-item-action">Share Event</a>
+                <a href="pages/profile.php" class="list-group-item list-group-item-action">Profile</a>
 
 
                 <?php if (isset($_SESSION['username'])) : ?>

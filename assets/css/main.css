@@ -7,15 +7,17 @@
 
 /* Sidebar Styling */
 #sidebar-wrapper {
-  min-height: 100vh;
-  width: 322px;
+  min-height: 70%;
+  width: 332px;
   background-color: rgb(114, 114, 114);
+  padding: 50px;
 }
 
 .list-group {
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
 /* Page content styling*/
 
 #page-content-wrapper {
