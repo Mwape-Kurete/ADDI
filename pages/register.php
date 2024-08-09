@@ -46,89 +46,75 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<div class="container-fluid register-form">
-    <form action="POST" action="register.php">
+<div class="row register-form">
+    <div class="col-10 mx-auto form-container-register">
+        <form action="POST" action="register.php">
+            <h2 class="form-header mx-auto">Create An Account</h2>
+            <!-- base info -->
+            <h6>Full Name:</h6>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="formId1" id="fullname" placeholder="" />
+                <label for="fullname">Full Name</label>
+            </div>
+            <h6>Email Address:</h6>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="formId1" id="email" placeholder="" />
+                <label for="email">Email Address</label>
+            </div>
 
-        <!-- base info -->
-        <h6>Full Name:</h6>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="formId1" id="fullname" placeholder="" />
-            <label for="fullname">Full Name</label>
-        </div>
-        <h6>Email Address:</h6>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" name="formId1" id="email" placeholder="" />
-            <label for="email">Email Address</label>
-        </div>
+            <!-- password -->
+            <div class="row g-3">
+                <h6>Password:</h6>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="" />
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" name="formId1" id="confirm-password" placeholder="" />
+                        <label for="confirm-password">Confirm Password</label>
+                    </div>
+                </div>
+            </div>
 
-        <!-- password -->
-        <div class="row g-3">
-            <h6>Password:</h6>
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="password" id="formId1" placeholder="" />
-                    <label for="password">Password</label>
-                </div>
+            <!-- bio and more info -->
+            <h6>Bio:</h6>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="bio" style="height: 170px"></textarea>
+                <label for="bio">Bio</label>
             </div>
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="formId1" id="formId1" placeholder="" />
-                    <label for="formId1">Confirm Password</label>
-                </div>
-            </div>
-        </div>
 
-        <!-- bio and more info -->
-        <h6>Bio:</h6>
-        <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="bio" style="height: 170px"></textarea>
-            <label for="bio">Bio</label>
-        </div>
 
-        <br>
-        <div class="row g-3">
-            <h6>Tell Us a Few Facts About Yourself</h6>
-            <div class="col">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Fact #01</span>
-                    <input type="text" class="form-control" placeholder="I think Drake is overrated" aria-label="Username" aria-describedby="basic-addon1">
+            <!-- Upload Profile photo and link IG -->
+            <br>
+            <div class="row g-3">
+                <div class="col">
+                    <div class="form-group mb-3">
+                        <label for="profile-img" class="form-label profile-form-label">Add A Profile Photo</label>
+                        <br>
+                        <input class="form-control pfp-input" type="file" id="profile-img">
+                    </div>
+                </div>
+                <div class="col">
+                    <span class="instagram-handle">What's your @?</span>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">@</span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="ig-handle" placeholder="Instagram Handle">
+                            <label for="ig-handle">instagram handle</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Fact #02</span>
-                    <input type="text" class="form-control" placeholder="I love Aperol Spritz" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </div>
-            <div class="col">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Fact #03</span>
-                    <input type="text" class="form-control" placeholder="I don't like alcohol" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </div>
-        </div>
-
-        <!-- Upload Profile photo and link IG -->
-        <br>
-        <div class="row g-3">
-            <div class="col">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-            </div>
-            <div class="col">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">what's your instagram handle</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </div>
-        </div>
-        <!-- submit button  -->
-        <br>
-        <button type="submit" class="btn btn-primary">Create Your Account</button>
-    </form>
+            <!-- submit button  -->
+            <br>
+            <button type="submit" class="btn btn-primary">Create Your Account</button>
+        </form>
+    </div>
 </div>
+
 
 
 <?php include '../includes/footer.php' ?>

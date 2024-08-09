@@ -13,6 +13,7 @@
   border: 2px solid black;
   border-radius: 5px;
   margin: 15px;
+  text-align: center;
 }
 
 .list-group {
@@ -30,6 +31,8 @@
   margin: 5px 5px 5px -45px;
 
   box-shadow: rgba(175, 117, 194, 1) -5px 5px;
+
+  text-align: center;
 }
 
 .activityPanel {
@@ -58,6 +61,30 @@
 }
 
 /*Forms*/
+
+/*register form*/
+form {
+  max-height: 900px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 50px;
+
+  background-color: white;
+  box-shadow: rgba(175, 117, 194, 1) -5px 5px;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.profile-form-label {
+  margin: 2px;
+}
+
+.custom-file-input {
+  min-height: 58px !important;
+  line-height: 2;
+}
 
 /*general styling*/
 .form-contain {
