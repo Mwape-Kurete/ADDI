@@ -4,6 +4,14 @@
   width: 100%;
   align-items: stretch;
 }
+
+/* Page content styling*/
+
+#page-content-wrapper {
+  width: 100%;
+  padding-top: 20px;
+}
+
 /* Sidebar Styling */
 #sidebar-wrapper {
   min-height: 100vh;
@@ -50,13 +58,6 @@
 
 .profilePanel {
   max-width: 210px;
-}
-
-/* Page content styling*/
-
-#page-content-wrapper {
-  width: 100%;
-  padding-top: 20px;
 }
 
 /*Forms*/
