@@ -1,3 +1,26 @@
+/* colours */
+/* element{
+  background-color: #f4eae0;
+  background-color: #e1643b;
+  background-color: #92b774;
+  background-color: #dc400e;
+  background-color: #F8EFC6;
+  background-color: #AF75C2;
+  background-color: #ffbf44;
+
+} */
+
+/*START OF ALL STYLING*/
+
+/*UNIVERSAL styling*/
+.form-contain {
+  max-width: 70%;
+}
+
+body {
+  background-color: #f4eae0;
+}
+
 /* wrapper for page content */
 #wrapper {
   display: flex;
@@ -86,11 +109,4 @@ form {
   line-height: 2;
 }
 
-/*general styling*/
-.form-contain {
-  max-width: 70%;
-}
-
-body {
-  background-color: #f4eae0;
-}
+/*END OF ALL STYLING*/
