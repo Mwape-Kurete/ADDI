@@ -1,14 +1,146 @@
 /* colours */
 /* element{
-  background-color: #f4eae0;
-  background-color: #e1643b;
-  background-color: #92b774;
-  background-color: #dc400e;
-  background-color: #F8EFC6;
-  background-color: #AF75C2;
-  background-color: #ffbf44;
+  background-color: rgb(244, 234, 224); /*white -> stone
+  background-color: rgb(224, 100, 59); /*orange light
+  background-color: rgb(146, 183, 116); /*green
+  background-color: rgb(220, 64, 14); /*orange dark
+  background-color: rgb(248, 239, 198); /*white egg/yellow
+  background-color: rgb(175, 117, 194); /*purple 
+  background-color: rgb(255, 191, 68); /*yellow 
 
 } */
+
+/*Fonts
+.montserrat-alternates-thin {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.montserrat-alternates-extralight {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.montserrat-alternates-light {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.montserrat-alternates-regular {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.montserrat-alternates-medium {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.montserrat-alternates-semibold {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.montserrat-alternates-bold {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.montserrat-alternates-extrabold {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.montserrat-alternates-black {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.montserrat-alternates-thin-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.montserrat-alternates-extralight-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.montserrat-alternates-light-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.montserrat-alternates-regular-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.montserrat-alternates-medium-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.montserrat-alternates-semibold-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.montserrat-alternates-bold-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.montserrat-alternates-extrabold-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.montserrat-alternates-black-italic {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+.arya-regular {
+  font-family: "Arya", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.arya-bold {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fascinate-inline-regular {
+  font-family: "Fascinate Inline", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+end of all fonts
+*/
 
 /*START OF ALL STYLING*/
 
@@ -19,6 +151,184 @@
 
 body {
   background-color: #f4eae0;
+
+  width: 100%;
+  height: 100%;
+  --color: rgb(228, 222, 194);
+  background-color: #f4eae0;
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 55px 55px;
+}
+
+.list-group-item + .list-group-item {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.list-group-item:first-child {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.list-group-flush > .list-group-item:last-child {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/*hover states*/
+
+.list-group-item + .list-group-item:hover {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(175, 117, 194);
+}
+
+.list-group-item:first-child:hover {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(175, 117, 194);
+}
+
+.list-group-flush > .list-group-item:last-child:hover {
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgb(175, 117, 194);
+}
+
+.buttons-nav {
+  margin-top: 55%;
+  justify-content: space-between;
+}
+
+.btn + .btn-light {
+  max-width: 80%;
+  margin: 0 auto;
+  border-radius: 5px;
+  border: none;
+
+  background-color: rgb(220, 64, 14);
+  box-shadow: rgb(0, 0, 0) -5px 5px;
+  border: 1px solid black;
+
+  text-align: center;
+
+  color: black;
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-size: larger;
+  font-style: normal;
+}
+
+.btn + .btn-light:hover {
+  max-width: 80%;
+  margin: 0 auto;
+
+  border-radius: 5px;
+  border: none;
+  border: 1px solid black;
+
+  background-color: rgb(175, 117, 194);
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #000000;
+
+  text-align: center;
+
+  color: black;
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*font styling*/
+p {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.logo-txt {
+  font-family: "Fascinate Inline", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 5%;
+}
+
+h3 {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h6 {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.list-group-item {
+  font-family: "Arya", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.list-group-item:hover {
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.form-header {
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+option {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.form-select {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* wrapper for page content */
@@ -51,14 +361,19 @@ body {
   margin-bottom: 15px;
 }
 
+.sidebar-item-group {
+  margin: 0 auto;
+  margin-top: 50%;
+}
+
 /*Activity Panel*/
 #activityPanel-wrapper {
   min-height: 100vh;
-  width: 195px;
+  width: 250px;
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 5px 5px 5px -45px;
+  margin: 5px 5px 5px -65px;
 
   box-shadow: rgba(175, 117, 194, 1) -5px 5px;
 
@@ -72,28 +387,228 @@ body {
 /*profile panel*/
 #profilePanel-wrapper {
   min-height: 100vh;
-  width: 195px;
+  width: 250px;
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 5px 5px 5px -45px;
+  margin: 5px 5px 5px -65px;
+  padding: 15px;
+
+  box-shadow: rgba(175, 117, 194, 1) -5px 5px;
+  text-align: center;
 }
 
 .profilePanel {
   max-width: 210px;
 }
 
-/*Forms*/
+.profile-photo {
+  display: flex;
+  justify-content: center;
+}
 
-/*register form*/
+.username-handle {
+  text-align: center;
+  padding: 5px;
+}
+
+/*PROFILE PAGE */
+
+/*FORMS STYLING*/
 form {
+  max-height: 900px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 50px;
+  margin-bottom: 50px;
+}
+
+input {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+label {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  outline: 0px;
+  box-shadow: rgba(29, 29, 30, 0.25) 0px 0px 0px 0.15rem;
+}
+
+.form-select:focus {
+  color: var(--bs-body-color);
+  border: 1px solid black;
+  background-color: var(--bs-body-bg);
+  outline: 0px;
+  box-shadow: rgba(29, 29, 30, 0.25) 0px 0px 0px 0.15rem;
+}
+
+option:hover {
+  background-color: rgba(146, 183, 116, 1);
+}
+
+/*register & Login form*/
+.login {
+  max-height: 900px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 50px;
+  justify-content: center;
+  margin-top: 13%;
+
+  background-color: white;
+  box-shadow: rgba(255, 191, 68, 1) -5px 5px;
+}
+
+.register {
   max-height: 900px;
   border: solid 2px black;
   border-radius: 5px;
   padding: 50px;
 
   background-color: white;
-  box-shadow: rgba(175, 117, 194, 1) -5px 5px;
+  box-shadow: rgba(255, 191, 68, 1) -5px 5px;
+}
+
+.login-reg {
+  width: 80%;
+
+  background-color: rgba(255, 191, 68, 1);
+  border: 1px solid black;
+  box-shadow: rgb(0, 0, 0) -5px 5px;
+
+  color: black;
+
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.login-reg:hover {
+  width: 80%;
+
+  background-color: rgba(255, 191, 68, 1);
+  border: 1px solid black;
+
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #000000;
+
+  color: black;
+
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-control-plaintext {
+  border: 1px solid black;
+}
+
+.form-select {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+#datetimeInput {
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.input-group-text {
+  border: 1px solid black;
+  background-color: rgba(255, 191, 68, 1);
+
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.profile-form-label {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.instagram-handle {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.form-control[type="file"] {
+  border: 1px solid black;
+  padding: 13px;
+}
+
+/*END OF register & Login form*/
+
+.share {
+  max-height: 900px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 50px;
+
+  background-color: white;
+  box-shadow: rgba(146, 183, 116, 1) -5px 5px;
+}
+
+.asks {
+  max-height: 900px;
+  border: solid 2px black;
+  border-radius: 5px;
+  padding: 50px;
+
+  background-color: white;
+  box-shadow: rgba(146, 183, 116, 1) -5px 5px;
+}
+
+.share-ask {
+  width: 80%;
+
+  background-color: rgba(146, 183, 116, 1);
+  border: 1px solid black;
+  box-shadow: rgb(0, 0, 0) -5px 5px;
+
+  color: black;
+
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.share-ask:hover {
+  width: 80%;
+
+  background-color: rgba(255, 191, 68, 1);
+  border: 1px solid black;
+
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #000000;
+
+  color: black;
+
+  font-family: "Arya", system-ui;
+  font-weight: bolder;
+  font-style: normal;
+  font-size: 20px;
 }
 
 .form-header {
