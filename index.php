@@ -1,7 +1,7 @@
 <?php include 'includes/header.php'; ?>
 
 <div class="row">
-    <div class="col main-pageContent">
+    <div class="col main-pageContent home-tabs">
         <?php include 'includes/home-tabs.php' ?>
     </div>
     <div class="col activityPanel">

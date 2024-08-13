@@ -1,5 +1,5 @@
 <!--Profile Tabs Start-->
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs profile-tabs">
     <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">Answered</a>
     </li>

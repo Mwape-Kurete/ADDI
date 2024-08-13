@@ -373,7 +373,7 @@ option {
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 5px 5px 5px -65px;
+  margin: 5px 5px 5px -10px;
 
   box-shadow: rgba(175, 117, 194, 1) -5px 5px;
 
@@ -391,7 +391,7 @@ option {
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
-  margin: 5px 5px 5px -65px;
+  margin: 5px 5px 5px -10px;
   padding: 15px;
 
   box-shadow: rgba(175, 117, 194, 1) -5px 5px;
@@ -628,4 +628,53 @@ textarea {
   line-height: 2;
 }
 
+/*End of Forms*/
+
+/*TABS*/
+.nav-tabs {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+
+  border-bottom: solid 2.5px black;
+}
+
+.home-tabs {
+  max-width: 75%;
+}
+
+.home-nav-tabs {
+  text-align: center;
+  width: 250px;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: rgb(255, 191, 68);
+  border: 2px solid black;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:hover {
+  background-color: rgb(175, 117, 194);
+  color: black;
+  border: 2px solid black;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active:hover {
+  background-color: rgb(255, 191, 68);
+  border: 2px solid black;
+}
+
+.profile-tabs {
+  max-width: 75%;
+}
 /*END OF ALL STYLING*/
