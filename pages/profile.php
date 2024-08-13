@@ -4,7 +4,7 @@
     <div class="col main-pageContent">
         <h1>My Answered, My Asks, My Events, My Saved Tabs go here</h1>
     </div>
-    <div class="col-2 activityPanel">
+    <div class="col activityPanel">
         <?php include '../includes/profile_panel.php' ?>
     </div>
 </div>

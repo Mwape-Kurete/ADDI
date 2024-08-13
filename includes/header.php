@@ -57,7 +57,7 @@
                         href="/ADDI/pages/login.php"
                         class="btn btn-light list-group-item-action mb-3">Login</a>
                     <a
-                        href="/ADDI/pages/login.php"
+                        href="/ADDI/pages/register.php"
                         class="btn btn-light list-group-item-action mb-3">Create Account</a>
                 </div>
                 <!--/NAV BUTTONS-->

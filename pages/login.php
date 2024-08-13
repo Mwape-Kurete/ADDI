@@ -39,24 +39,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include '../includes/header.php'; ?>
 
 <div class="row login-form">
-    <div class="col form-contain">
-        <form action="">
+    <div class="col form-contain mx-auto">
+        <!--Login form Start -->
+        <form action="" class="login">
+            <h2 class="form-header mx-auto">Login</h2>
             <!-- form inputs -->
             <h6>Email/Username:</h6>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="formId1" id="username" placeholder="" />
+                <input
+                    type="text"
+                    class="form-control"
+                    name="formId1"
+                    id="username"
+                    placeholder="" />
                 <label for="username">Email/Username</label>
             </div>
             <h6>Password:</h6>
             <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password" />
                 <label for="password">Password</label>
             </div>
 
             <!-- submit button  -->
-            <br>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <br />
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary login-reg">
+                    Login
+                </button>
+            </div>
         </form>
+        <!--Login form End -->
     </div>
 </div>
 

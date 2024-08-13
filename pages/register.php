@@ -48,17 +48,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div class="row register-form">
     <div class="col-10 mx-auto form-container-register">
-        <form action="POST" action="register.php">
+        <!--Forms Start Here-->
+        <form action="POST" action="register.php" class="register">
             <h2 class="form-header mx-auto">Create An Account</h2>
             <!-- base info -->
             <h6>Full Name:</h6>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="formId1" id="fullname" placeholder="" />
+                <input
+                    type="text"
+                    class="form-control"
+                    name="formId1"
+                    id="fullname"
+                    placeholder="" />
                 <label for="fullname">Full Name</label>
             </div>
             <h6>Email Address:</h6>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" name="formId1" id="email" placeholder="" />
+                <input
+                    type="email"
+                    class="form-control"
+                    name="formId1"
+                    id="email"
+                    placeholder="" />
                 <label for="email">Email Address</label>
             </div>
 
@@ -67,13 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h6>Password:</h6>
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="" />
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="password"
+                            id="password"
+                            placeholder="" />
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" name="formId1" id="confirm-password" placeholder="" />
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="formId1"
+                            id="confirm-password"
+                            placeholder="" />
                         <label for="confirm-password">Confirm Password</label>
                     </div>
                 </div>
@@ -82,19 +103,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- bio and more info -->
             <h6>Bio:</h6>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="bio" style="height: 170px"></textarea>
+                <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="bio"
+                    style="height: 170px"></textarea>
                 <label for="bio">Bio</label>
             </div>
 
-
             <!-- Upload Profile photo and link IG -->
-            <br>
+            <br />
             <div class="row g-3">
                 <div class="col">
                     <div class="form-group mb-3">
-                        <label for="profile-img" class="form-label profile-form-label">Add A Profile Photo</label>
-                        <br>
-                        <input class="form-control pfp-input" type="file" id="profile-img">
+                        <label
+                            for="profile-img"
+                            class="form-label profile-form-label">Add A Profile Photo</label>
+                        <br />
+                        <input
+                            class="form-control pfp-input"
+                            type="file"
+                            id="profile-img" />
                     </div>
                 </div>
                 <div class="col">
@@ -102,16 +131,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="input-group mb-3">
                         <span class="input-group-text">@</span>
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="ig-handle" placeholder="Instagram Handle">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="ig-handle"
+                                placeholder="Instagram Handle" />
                             <label for="ig-handle">instagram handle</label>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- submit button  -->
-            <br>
-            <button type="submit" class="btn btn-primary">Create Your Account</button>
+            <br />
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary login-reg">
+                    Create Your Account
+                </button>
+            </div>
         </form>
+        <!--/Forms Start Here-->
     </div>
 </div>
 
