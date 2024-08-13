@@ -596,7 +596,7 @@ option:hover {
 .share-ask:hover {
   width: 80%;
 
-  background-color: rgba(255, 191, 68, 1);
+  background-color: rgba(146, 183, 116, 1);
   border: 1px solid black;
 
   transition: all 0.5s;
