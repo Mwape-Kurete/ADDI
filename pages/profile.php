@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col main-pageContent">
-        <h1>My Answered, My Asks, My Events, My Saved Tabs go here</h1>
+        <?php include '../includes/profile-tabs.php' ?>;
     </div>
     <div class="col activityPanel">
         <?php include '../includes/profile_panel.php' ?>
