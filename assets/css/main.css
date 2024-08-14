@@ -183,6 +183,16 @@ body {
   background-size: 55px 55px;
 }
 
+body::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: white;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(175, 117, 194);
+  height: 50px;
+}
+
 .list-group-item + .list-group-item {
   border-top: solid 2px black;
   border-bottom: solid 2px black;
@@ -686,20 +696,24 @@ textarea {
 }
 
 /*TABS Content Styling*/
-.home-content-events {
+.tab-content {
   width: 100%;
   height: 88%;
-  /* Add your background pattern here */
-  background-color: #ffffff;
-  background-image: radial-gradient(rgba(12, 12, 12, 0.171) 2px, transparent 0);
-  background-size: 30px 30px;
-  background-position: -5px -5px;
-  border: 2px solid black;
+
+  scrollbar-color: rgb(175, 117, 194) white;
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 
-  box-shadow: rgb(255, 191, 68) -5px 5px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-margin: 20px;
+
+  /* border-bottom: #000000 solid 2px;
+  border-left: #000000 solid 2px;
+  border-right: #000000 solid 2px;
+
+  box-shadow: rgb(255, 191, 68) -5px 5px; */
 }
 
 /*END OF ALL STYLING*/
