@@ -9,5 +9,8 @@
     <li class="nav-item profile-nav-tabs">
         <a class="nav-link" href="#" data-target="saved-content">Saved</a>
     </li>
+    <li class="nav-item profile-nav-tabs">
+        <a class="nav-link" href="#" data-target="pending-content">Pending Asks</a>
+    </li>
 </ul>
 <!--Profile Tabs End-->

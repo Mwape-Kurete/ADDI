@@ -29,9 +29,7 @@
 </head>
 
 <body>
-    <?php session_start();
-    var_dump($_SESSION); //unexpected session breaking debug
-    ?>
+    <?php session_start(); ?>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">

@@ -12,6 +12,9 @@
         <div class="profile-content-saved tab-content" id="saved-content" style="display: none;">
 
         </div>
+        <div class="profile-content-saved tab-content" id="pending-content" style="display: none;">
+
+        </div>
 
     </div>
     <div class="col activityPanel">
