@@ -7,16 +7,22 @@ require '../includes/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Fetch and sanitize the form inputs
-    $title = $conn->real_escape_string($_POST['question_titlee']);
+    $title = $conn->real_escape_string($_POST['question_title']);
     $content = $conn->real_escape_string($_POST['question_content']);
     $category = $conn->real_escape_string($_POST['question_category']);
+
+    // Assuming these values are provided through a form or other sources
+    $user_id = $_SESSION['user_id']; // This should come from the logged-in user's session, e.g., $_SESSION['user_id']
+    $approved = 0; // 0 indicates the question is not yet approved
 
     // Validation (You can add more validation as needed)
     if (empty($title) || empty($content) || empty($category)) {
         echo "All fields are required!";
     } else {
         // Prepare the SQL query to insert the ask (question) into the database
-        $sql = "INSERT INTO Questions (title, content, category) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO questions (user_id, question_title, details, category, approved, created_at) 
+                VALUES (?, ?, ?, ?, ?, current_timestamp())";
+
         $stmt = $conn->prepare($sql);
 
         if (!$stmt) {
@@ -24,12 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Failed to prepare statement: " . $conn->error;
         } else {
             // Bind parameters to the SQL query
-            $stmt->bind_param('sss', $title, $content, $category);
+            $stmt->bind_param('isssi', $user_id, $title, $content, $category, $approved);
 
             // Execute the query
             if ($stmt->execute()) {
                 // Redirect or display a success message
-                echo "Your ask has been posted successfully!";
+                echo "Your ask has been sent for review!";
             } else {
                 // Handle errors in executing the SQL query
                 echo "Failed to post your ask: " . $stmt->error;
@@ -56,8 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input
                 type="text"
                 class="form-control"
-                name="question_titlee"
-                id="formId1"
+                name="question_title"
+                id="questionTitle"
                 placeholder="" />
             <label for="formId1">My Ask is...</label>
         </div>
@@ -69,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 class="form-control"
                 placeholder="Leave a comment here"
                 name="question_content"
-                id="floatingTextarea2"
+                id="questionDetails"
                 style="height: 170px"></textarea>
             <label for="floatingTextarea2">Elaborate on your ask here...</label>
         </div>
@@ -78,13 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <br />
         <select class="form-select" name="question_category" aria-label="Default select example">
             <option selected>Post Tags:</option>
-            <option value="1">Outdoor</option>
-            <option value="2">Indoor</option>
-            <option value="3">Night Event</option>
-            <option value="4">Day Event</option>
-            <option value="5">Live Music</option>
-            <option value="6">Art&Culture</option>
-            <option value="3">Sports Screening</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Night Event">Night Event</option>
+            <option value="Day Event">Day Event</option>
+            <option value="Live Music">Live Music</option>
+            <option value="Art&Culture">Art&Culture</option>
+            <option value="Sports Screening">Sports Screening</option>
         </select>
 
         <!-- submit button  -->

@@ -56,8 +56,8 @@
                 <option value="3">Night Event</option>
                 <option value="4">Day Event</option>
                 <option value="5">Live Music</option>
-                <option value="6">Art&Culture</option>
-                <option value="3">Sports Screening</option>
+                <option value="6">Art & Culture</option>
+                <option value="3">Festival</option>
             </select>
 
             <!-- submit button  -->

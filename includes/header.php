@@ -29,7 +29,9 @@
 </head>
 
 <body>
-    <?php session_start(); ?>
+    <?php session_start();
+    var_dump($_SESSION); //unexpected session breaking debug
+    ?>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
@@ -50,7 +52,7 @@
 
                 <!--NAV BUTTONS-->
                 <div class="buttons-nav">
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['user_id'])): ?>
                         <a
                             href="/ADDI/pages/logout.php"
                             class="btn btn-light list-group-item-action mb-3" id="btn-logout">Logout</a>

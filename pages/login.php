@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Fetch values of submitted form
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; // Ensure this matches the form's name attribute
 
     // Define the SQL query to fetch the user with the provided username
     $sql = 'SELECT id, password FROM users WHERE username = ?';
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['username'] = $username;
 
                 // Redirect to the user's homepage or dashboard
-                header('Location: index.php');
+                header('Location: ../index.php?id=' .  $_SESSION['user_id']);
                 exit();
             } else {
                 // Password is incorrect
@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 }
 ?>
+
 
 
 <?php include '../includes/header.php'; ?>
@@ -82,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input
                     type="password"
                     class="form-control"
+                    name="password"
                     id="password"
                     placeholder="Password" />
                 <label for="password">Password</label>

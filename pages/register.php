@@ -82,8 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Commit the transaction 
         $conn->commit();
 
-        // Redirect the user after they have successfully created an account 
+        // Redirect the user after they have successfully created an account  and store their id in session storage
+        $_SESSION['user_id'] = $user_id;
         header('Location: ../index.php?id=' . $user_id);
+
         exit();
     } catch (Exception $e) {
         // Rollback the transaction if there's an issue 
