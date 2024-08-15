@@ -1,46 +1,105 @@
 <?php
 
-require '../includes/db.php'; //ensures that the db.php file (containing our connection is placed)
+require '../includes/db.php'; // Ensure that the db.php file (containing the connection) is included
 
-//checking if the request method is POST, which indicates the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    //fetching values of submitted form
-    $username = $_POST['username'];
+    // Fetching values of submitted form and setting them as PHP variables
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $bio = $_POST['bio'];
+    $ig_handle = $_POST['ig_handle'];
 
-    $sql = 'SELECT * FROM users WHERE (add your query here)';
-
-    // prepare the SQL statement for execution 
-    // -> symbol is the object operator (Js would be: user.age | PHP is user->age)
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ss', $username, $password); //'s' means string parameter 
-
-    //execute the SQL statement 
-    $stmt->execute();
-
-    //storing the result 
-    $result = $stmt->get_result();
-
-    //checks if the result is not empty 
-    if ($result->num_rows > 0) {
-        // fetching the data retrieved from the associative array and storing it in user variable... i think 
-        $user = $result->fetch_assoc();
-
-        if ($password === $user['password']) {
-            //start a session and store 
-            $_SESSION['username'] = $user['id'];
-            header('Location: index.php');
-            exit();
-        } else {
-            echo 'Invalid username/password';
-        }
-    } else {
-        echo 'Invalid username/password';
+    // Some form validation
+    if ($password !== $confirm_password) {
+        echo 'Passwords do not match!';
+        exit();
     }
 
-    $stmt->close();
-    $conn->close();
+    // Password hashing
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Check if the file was uploaded before accessing it
+    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == UPLOAD_ERR_OK) {
+        $profile_pic = $_FILES['profile_pic']['name'];
+
+        // Handle file upload
+        $target_dir = "../uploads/";
+        $target_file = $target_dir . basename($profile_pic);
+
+        // The following verifies that the file is an image
+        $check = getimagesize($_FILES["profile_pic"]["tmp_name"]);
+        if ($check !== false) {
+            if (move_uploaded_file($_FILES["profile_pic"]["tmp_name"], $target_file)) {
+                echo "The file " . basename($_FILES["profile_pic"]["name"]) . " has been uploaded.";
+            } else {
+                echo "Sorry, there was an issue uploading your file.";
+                exit(); // Exiting to prevent DB insertion if the image failed to upload
+            }
+        } else {
+            echo "File is not an image.";
+            exit(); // Exiting to prevent DB insertion if the image is incorrect
+        }
+    } else {
+        echo "No file uploaded or file upload error.";
+        exit(); // Exiting if the file was not uploaded correctly
+    }
+
+    // Start a transaction to ensure data consistency 
+    $conn->begin_transaction();
+
+    try {
+        // Inserting a new user into the Users Table
+        $sql_user = "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)";
+        $stmt_user = $conn->prepare($sql_user);
+
+        // Check if the prepare() failed
+        if (!$stmt_user) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+
+        $stmt_user->bind_param("sss", $fullname, $email, $hashed_password);
+
+        // Execute the SQL statement for inserting the user 
+        $stmt_user->execute();
+
+        // Fetch the ID of the user that was just created 
+        $user_id = $stmt_user->insert_id;
+
+        // Inserting the corresponding profile into the Profiles table 
+        $sql_profile = "INSERT INTO Profiles (user_id, profile_pic, bio, website) VALUES (?, ?, ?, ?)";
+        $stmt_profile = $conn->prepare($sql_profile);
+
+        // Check if the prepare() failed
+        if (!$stmt_profile) {
+            throw new Exception("Prepare failed: " . $conn->error);
+        }
+
+        $stmt_profile->bind_param('isss', $user_id, $profile_pic, $bio, $ig_handle);
+        $stmt_profile->execute();
+
+        // Commit the transaction 
+        $conn->commit();
+
+        // Redirect the user after they have successfully created an account 
+        header('Location: ../index.php?id=' . $user_id);
+        exit();
+    } catch (Exception $e) {
+        // Rollback the transaction if there's an issue 
+        $conn->rollback();
+        echo "Failed to create account: " . $e->getMessage();
+    } finally {
+
+        // Close all the statements and connections
+        if (isset($stmt_user)) {
+            $stmt_user->close();
+        }
+        if (isset($stmt_profile)) {
+            $stmt_profile->close();
+        }
+        $conn->close();
+    }
 }
 ?>
 
@@ -49,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="row register-form">
     <div class="col-10 mx-auto form-container-register">
         <!--Forms Start Here-->
-        <form action="POST" action="register.php" class="register">
+        <form method="POST" action="register.php" enctype="multipart/form-data" class="register">
             <h2 class="form-header mx-auto">Create An Account</h2>
             <!-- base info -->
             <h6>Full Name:</h6>
@@ -57,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input
                     type="text"
                     class="form-control"
-                    name="formId1"
+                    name="fullname"
                     id="fullname"
                     placeholder="" />
                 <label for="fullname">Full Name</label>
@@ -67,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input
                     type="email"
                     class="form-control"
-                    name="formId1"
+                    name="email"
                     id="email"
                     placeholder="" />
                 <label for="email">Email Address</label>
@@ -92,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input
                             type="password"
                             class="form-control"
-                            name="formId1"
+                            name="confirm_password"
                             id="confirm-password"
                             placeholder="" />
                         <label for="confirm-password">Confirm Password</label>
@@ -106,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <textarea
                     class="form-control"
                     placeholder="Leave a comment here"
+                    name="bio"
                     id="bio"
                     style="height: 170px"></textarea>
                 <label for="bio">Bio</label>
@@ -120,10 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             for="profile-img"
                             class="form-label profile-form-label">Add A Profile Photo</label>
                         <br />
-                        <input
-                            class="form-control pfp-input"
-                            type="file"
-                            id="profile-img" />
+                        <input class="form-control pfp-input" type="file" name="profile_pic" id="profile-img" />
                     </div>
                 </div>
                 <div class="col">
@@ -135,6 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 type="text"
                                 class="form-control"
                                 id="ig-handle"
+                                name="ig_handle"
                                 placeholder="Instagram Handle" />
                             <label for="ig-handle">instagram handle</label>
                         </div>

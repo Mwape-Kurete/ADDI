@@ -1,34 +1,57 @@
 <?php
-//session_start(); //starts / resumes a session -> this is already set in my header file
-require '../includes/db.php'; //ensures that the db.php file (containing our connection is placed)
+require '../includes/db.php'; // Include the database connection
 
-//checking if the request method is POST, which indicates the form has been submitted
+// Check if the request method is POST, which indicates the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    //fetching values of submitted form
+    // Fetch values of submitted form
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Define the SQL query to insert the username and password into the users table
-    $sql = 'INSERT INTO users (add your query here)';
+    // Define the SQL query to fetch the user with the provided username
+    $sql = 'SELECT id, password FROM users WHERE username = ?';
 
-    // prepare the SQL statement for execution 
-    // -> symbol is the object operator (Js would be: user.age | PHP is user->age)
+    // Prepare the SQL statement for execution
     $stmt = $conn->prepare($sql);
 
-
-    // Add the values of the user's input into the SQL statement
-    $stmt->bind_param("ss", $username, $password); // "ss" means two string parameters
-
-    // If the prepared statement is executed
-    if ($stmt->execute()) {
-        echo "Registration Complete"; // If execution is successful, display a success message
+    if (!$stmt) {
+        // If preparation fails, show an error message
+        echo "Error preparing statement: " . $conn->error;
     } else {
-        echo "Error" . $sql . "<br>" . $conn->error; // If there is an error, display the error message along with the SQL query and connection error
-    }
+        // Bind the value of the user's input into the SQL statement
+        $stmt->bind_param("s", $username); // "s" means one string parameter
 
-    // Close the statement
-    $stmt->close();
+        // Execute the prepared statement
+        $stmt->execute();
+
+        // Get the result of the query
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // Fetch the associated row from the database
+            $user = $result->fetch_assoc();
+
+            // Verify the password
+            if (password_verify($password, $user['password'])) {
+                // Password is correct, start a session and store user ID
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $username;
+
+                // Redirect to the user's homepage or dashboard
+                header('Location: index.php');
+                exit();
+            } else {
+                // Password is incorrect
+                echo "Invalid username or password.";
+            }
+        } else {
+            // No user found with the provided username
+            echo "Invalid username or password.";
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
 
     // Close the database connection
     $conn->close();
@@ -41,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="row login-form">
     <div class="col form-contain mx-auto">
         <!--Login form Start -->
-        <form action="" class="login">
+        <form method="POST" action="" class="login">
             <h2 class="form-header mx-auto">Login</h2>
             <!-- form inputs -->
             <h6>Email/Username:</h6>
@@ -49,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input
                     type="text"
                     class="form-control"
-                    name="formId1"
+                    name="username"
                     id="username"
                     placeholder="" />
                 <label for="username">Email/Username</label>
