@@ -782,6 +782,165 @@ textarea {
   box-shadow: rgb(255, 191, 68) -5px 5px; */
 }
 
+/*TEMPLATE STYLING*/
+
+/*event card*/
+.event-card {
+  /*aligning*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  /*styling*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.event-card-cont {
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: rgb(224, 100, 59) -5px 5px;
+}
+
+.lower-half {
+  margin-top: 30px;
+}
+
+.view-event-comments-btn {
+  margin: 0 auto;
+  max-width: 180px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-size: smaller;
+  font-style: normal;
+}
+
+.view-event-comments-btn:hover {
+  margin: 0 auto;
+  max-width: 180px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  color: black;
+  transform: translate(-0.25rem, -0.25rem);
+  background: white;
+
+  border: 2px solid black;
+  box-shadow: rgb(224, 100, 59) 0.25rem 0.25rem;
+
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-size: smaller;
+  font-style: normal;
+}
+
+/*asks card*/
+.ask-card {
+  /*aligning*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  /*styling*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.ask-card-cont {
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: rgb(0, 0, 0) -5px 5px;
+}
+
+.view-answers-asks-btn {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+
+  box-shadow: rgb(0, 0, 0) -5px 5px;
+
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-size: smaller;
+  font-style: normal;
+}
+
+.show-thread {
+  margin-top: -20px;
+  border-radius: 5px;
+}
+
+.view-answers-asks-btn:hover {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border: 2px solid black;
+  transition: all 0.5s;
+  transform: translate(0, 0.4em);
+  box-shadow: 0 0 0 0 #000000;
+
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-size: smaller;
+  font-style: normal;
+}
+
+.bi-heart:hover {
+  cursor: pointer;
+}
+
+/*user reply card*/
+.user-reply-card {
+  /*aligning*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  /*styling*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user-reply-card-cont {
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: rgba(146, 183, 116, 1) -5px 5px;
+}
+
+.bi-check-lg {
+  margin: 0 auto;
+  font-size: 3rem;
+}
+
+.check-icon-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/*END OF TEMPLATE STYLING*/
+
 /*SINGLE POST PAGE */
 .single-post-comments {
   overflow-y: scroll;

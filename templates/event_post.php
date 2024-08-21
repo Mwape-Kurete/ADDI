@@ -1,12 +1,14 @@
 <!--START OF EVENT CARD-->
 
 <div class="col-12 event-card">
-    <div class="card" style="width: 100%;">
+    <div class="card event-card-cont" style="width: 85%;">
         <div class="card-body">
             <h5 class="card-title event-title">Event title</h5>
             <p class="card-text event-details">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
             <p>When: <strong class="date-of-event">1 august 2024</strong></p>
             <p>Where: <strong class="location-of-event">A Place</strong></p>
+            <p class="event-ask-tag">#<span class="event-ask-type">event-tag</span></p>
             <div class="row lower-half">
                 <div class="col-11 meta-info">
                     <a href="#" class="card-link posted-by">@<span>username</span></a>
@@ -20,7 +22,7 @@
         <a
             name="view-event-comments"
             id="view-event-comments"
-            class="btn btn-primary"
+            class="btn btn-primary view-event-comments-btn"
             href="#"
             role="button">View Comments</a>
 
