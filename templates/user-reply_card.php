@@ -1,5 +1,5 @@
 <!--START OF reply CARD-->
-<div class="row replied-ask" style="width: 85%;">
+<div class="row replied-ask" style="width: 100%;">
     <?php include "asked_post.php"; ?>
     <div class="col-10 user-reply-card">
         <div class="card">
@@ -11,5 +11,6 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!--END OF reply CARD-->
+<!--END OF reply CARD-->

@@ -1,7 +1,7 @@
 <?php include '../includes/header.php'; ?>
 
 <div class="row">
-    <div class="col main-pageContent profile-tabs" style="width: 90%">
+    <div class="col-10 main-pageContent profile-tabs">
         <?php include '../includes/profile-tabs.php' ?>
         <div class="profile-content-answered tab-content" id="answered-content">
             <?php include '../templates/user-reply_card.php'; ?>
@@ -17,7 +17,7 @@
         </div>
 
     </div>
-    <div class="col-3 activityPanel">
+    <div class="col activityPanel">
         <?php include '../includes/profile_panel.php' ?>
     </div>
 </div>
