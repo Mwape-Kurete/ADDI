@@ -437,7 +437,7 @@ option {
 /*profile panel*/
 #profilePanel-wrapper {
   min-height: 100vh;
-  width: 250px;
+  width: 210px;
   background-color: white;
   border: 2px solid black;
   border-radius: 5px;
@@ -449,7 +449,7 @@ option {
 }
 
 .profilePanel {
-  max-width: 210px;
+  max-width: 200px;
 }
 
 .profile-photo {
@@ -695,7 +695,7 @@ textarea {
 
 .profile-nav-tabs {
   text-align: center;
-  width: 200px;
+  width: 150px;
 }
 
 .home-tabs {

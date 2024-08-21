@@ -9,15 +9,9 @@
         </div>
         <h6 class="username-handle">@dlalawhatyoumust</h6>
     </div>
-    <div class="list-group list-group-flush">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-            <li class="list-group-item">And a fifth one</li>
-        </ul>
-    </div>
+    <hr>
+    <p>@ig-handle</p>
+    <hr>
     <div class="bio-content">
         <h6>Bio:</h6>
         <p>

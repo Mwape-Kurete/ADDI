@@ -4,7 +4,7 @@ require '../includes/db.php'; // Ensure that the db.php file (containing the con
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Fetching values of submitted form and setting them as PHP variables
-    $fullname = $_POST['fullname'];
+    $username = $_POST['fullname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             throw new Exception("Prepare failed: " . $conn->error);
         }
 
-        $stmt_user->bind_param("sss", $fullname, $email, $hashed_password);
+        $stmt_user->bind_param("sss", $username, $email, $hashed_password);
 
         // Execute the SQL statement for inserting the user 
         $stmt_user->execute();
@@ -118,10 +118,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input
                     type="text"
                     class="form-control"
-                    name="fullname"
-                    id="fullname"
+                    name="username"
+                    id="username"
                     placeholder="" />
-                <label for="fullname">Full Name</label>
+                <label for="username">Username</label>
             </div>
             <h6>Email Address:</h6>
             <div class="form-floating mb-3">
