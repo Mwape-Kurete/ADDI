@@ -1,11 +1,11 @@
 <?php include '../includes/header.php'; ?>
 
 <div class="row">
-    <div class="col main-pageContent">
-        <h1>Single Post Page goes here</h1>
+    <div class="col main-pageContent single_post">
+        <?php include '../templates/single_post_container.php'; ?>
     </div>
-    <div class="col-2 activityPanel">
-        <h1>Activity Panel Here</h1>
+    <div class="col activityPanel">
+        <?php include '../includes/activity_panel.php'; ?>
     </div>
 </div>
 

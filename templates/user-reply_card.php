@@ -4,10 +4,23 @@
     <div class="col-10 user-reply-card">
         <div class="card">
             <div class="card-body">
-                <span><i class="bi bi-check-lg"></i></span>
-                <p>posted answer</p>
-                <small href="#" class="card-link posted-by">@<span>username</span></small>
-                <small class="card-link date-time-event">@<span class="time-event">00:00</span> <span class="date-event">00/00/00</span></small>
+                <div class="row upper-half-reply">
+                    <div class="col">
+                        <span><i class="bi bi-check-lg"></i></span>
+
+                    </div>
+                    <div class="col-10">
+                        <p>posted answer</p>
+                    </div>
+                </div>
+                <div class="row lower-half">
+                    <div class="col meta-info">
+                        <small>posted by you</small>
+                    </div>
+                    <div class="col-3 like">
+                        <small class="card-link date-time-asks">@<span class="time-asks">00:00</span> <span class="date-asks">00/00/00</span></small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

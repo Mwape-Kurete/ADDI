@@ -331,6 +331,22 @@ p {
   font-weight: 400;
   font-style: normal;
 }
+.meta-info {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 400;
+  font-size: smaller;
+  font-style: normal;
+}
+
+.meta-info > a {
+  text-decoration: none;
+  color: rgb(224, 100, 59);
+}
+
+.meta-info > a:hover {
+  text-decoration: underline;
+  color: rgb(220, 64, 14);
+}
 
 .logo-txt {
   font-family: "Fascinate Inline", system-ui;
@@ -346,6 +362,12 @@ h3 {
 }
 
 h6 {
+  font-family: "Arya", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h5 {
   font-family: "Arya", system-ui;
   font-weight: 700;
   font-style: normal;
@@ -386,6 +408,10 @@ option {
   display: flex;
   width: 100%;
   align-items: stretch;
+}
+
+.main-pageContent {
+  max-width: 75%;
 }
 
 /* Page content styling*/
@@ -754,6 +780,11 @@ textarea {
   border-right: #000000 solid 2px;
 
   box-shadow: rgb(255, 191, 68) -5px 5px; */
+}
+
+/*SINGLE POST PAGE */
+.single-post-comments {
+  overflow-y: scroll;
 }
 
 /*END OF ALL STYLING*/
