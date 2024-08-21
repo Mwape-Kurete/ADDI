@@ -20,21 +20,17 @@
     </div>
     <hr id="dotted-div">
     <div class="col-12 buttons">
-        <div class="col-6 approve">
-            <button
-                type="button"
-                class="btn btn-primary">
-                Approve
-            </button>
+        <button
+            type="button"
+            class="btn btn-primary btn-yes">
+            Approve
+        </button>
 
-        </div>
-        <div class="col-6 deny">
-            <button
-                type="button"
-                class="btn btn-primary">
-                Deny
-            </button>
-        </div>
+        <button
+            type="button"
+            class="btn btn-primary btn-no">
+            Deny
+        </button>
     </div>
 </div>
 
