@@ -12,10 +12,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ig_handle = $_POST['ig_handle'];
 
     // Some form validation
+    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+        echo 'Please fill in all required fields.';
+        exit();
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo 'Invalid email format!';
+        exit();
+    }
+
     if ($password !== $confirm_password) {
         echo 'Passwords do not match!';
         exit();
     }
+
+    if (strlen($password) < 8) {
+        echo 'passwoerd needs to be 8 characters long.';
+        exit();
+    }
+
+
+
 
     // Password hashing
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
