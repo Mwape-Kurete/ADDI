@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password']; // Ensure this matches the form's name attribute
 
     // Define the SQL query to fetch the user with the provided username
-    $sql = 'SELECT id, password FROM users WHERE username = ?';
+    $sql = 'SELECT user_id, password FROM users WHERE username = ?';
 
     // Prepare the SQL statement for execution
     $stmt = $conn->prepare($sql);
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Verify the password
             if (password_verify($password, $user['password'])) {
                 // Password is correct, start a session and store user ID
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $username;
 
                 // Redirect to the user's homepage or dashboard
