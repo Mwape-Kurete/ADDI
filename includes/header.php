@@ -1,3 +1,8 @@
+<?php
+session_start();
+print_r($_SESSION); // To check if session variables are present
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +34,6 @@
 </head>
 
 <body>
-    <?php session_start(); ?>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="border-right sidebar-cont" id="sidebar-wrapper">
@@ -50,10 +54,12 @@
 
                 <!--NAV BUTTONS-->
                 <div class="buttons-nav">
-                    <?php if (isset($_SESSION['user_id'])): ?>
-                        <a
-                            href="/ADDI/pages/logout.php"
-                            class="btn btn-light list-group-item-action mb-3" id="btn-logout">Logout</a>
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <form method="post" action="/ADDI/pages/logout.php" class="form-logout-btn">
+                            <button
+                                type="submit"
+                                class="btn btn-light list-group-item-action mb-3" id="btn-logout" name="logout-button">Logout</button>
+                        </form>
 
                     <?php else: ?>
                         <a

@@ -460,6 +460,18 @@ option {
   max-width: 210px;
 }
 
+.activity-notice {
+  padding-top: 15px;
+}
+
+h5.username-display {
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 700;
+  font-style: normal;
+  font-size: larger;
+  padding-top: 25px;
+}
+
 /*profile panel*/
 #profilePanel-wrapper {
   min-height: 100vh;
@@ -497,6 +509,13 @@ form {
   border-radius: 5px;
   padding: 50px;
   margin-bottom: 50px;
+}
+
+.form-logout-btn {
+  max-height: fit-content;
+  border: none;
+  padding: 5px;
+  margin: auto;
 }
 
 input {
@@ -783,6 +802,34 @@ textarea {
 }
 
 /*TEMPLATE STYLING*/
+
+/*Notice card*/
+.notice-card {
+  /*aligning*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+
+  /*styling*/
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.notice-card-cont {
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: rgb(255, 191, 68) -5px 5px;
+}
+
+.button-login-notice {
+  max-height: fit-content;
+  border: none;
+  padding: 5px;
+  width: 250px;
+  margin: auto;
+}
 
 /*event card*/
 .event-card {

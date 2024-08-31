@@ -1,4 +1,7 @@
 <?php
+session_start();
+print_r($_SESSION);
+
 require '../includes/db.php'; // Include the database connection
 
 // Check if the request method is POST, which indicates the form has been submitted
