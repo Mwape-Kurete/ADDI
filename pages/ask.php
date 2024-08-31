@@ -52,55 +52,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php include '../includes/header.php'; ?>
+<div class="row">
+    <?php if (isset($_SESSION['username'])): ?>
+        <div class="col-10 mx-auto">
+            <!--ask question Fom START-->
+            <form method="POST" action="" class="asks">
+                <h2 class="form-header mx-auto">Ask Around</h2>
+                <!-- base info -->
+                <h6>Ask Title:</h6>
+                <div class="form-floating mb-3">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="question_title"
+                        id="questionTitle"
+                        placeholder="" />
+                    <label for="formId1">My Ask is...</label>
+                </div>
 
-<div class="container-fluid mx-auto">
-    <form method="POST" action="" class="asks">
-        <h2 class="form-header mx-auto">Ask Around</h2>
-        <!-- base info -->
-        <h6>Ask Title:</h6>
-        <div class="form-floating mb-3">
-            <input
-                type="text"
-                class="form-control"
-                name="question_title"
-                id="questionTitle"
-                placeholder="" />
-            <label for="formId1">My Ask is...</label>
+                <!-- bio and more info -->
+                <h6>Let Me Elaborate:</h6>
+                <div class="form-floating">
+                    <textarea
+                        class="form-control"
+                        placeholder="Leave a comment here"
+                        name="question_content"
+                        id="questionDetails"
+                        style="height: 170px"></textarea>
+                    <label for="floatingTextarea2">Elaborate on your ask here...</label>
+                </div>
+
+                <!-- Tags -->
+                <br />
+                <select class="form-select" name="question_category" aria-label="Default select example">
+                    <option selected>Post Tags:</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Indoor">Indoor</option>
+                    <option value="Night Event">Night Event</option>
+                    <option value="Day Event">Day Event</option>
+                    <option value="Live Music">Live Music</option>
+                    <option value="Art&Culture">Art&Culture</option>
+                    <option value="Sports Screening">Sports Screening</option>
+                </select>
+
+                <!-- submit button  -->
+                <br />
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary share-ask">
+                        Ask Around!
+                    </button>
+                </div>
+            </form>
         </div>
+    <?php else: ?>
+        <?php include '../templates/please-login.php'; ?>
+    <?php endif; ?>
 
-        <!-- bio and more info -->
-        <h6>Let Me Elaborate:</h6>
-        <div class="form-floating">
-            <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                name="question_content"
-                id="questionDetails"
-                style="height: 170px"></textarea>
-            <label for="floatingTextarea2">Elaborate on your ask here...</label>
-        </div>
-
-        <!-- Tags -->
-        <br />
-        <select class="form-select" name="question_category" aria-label="Default select example">
-            <option selected>Post Tags:</option>
-            <option value="Outdoor">Outdoor</option>
-            <option value="Indoor">Indoor</option>
-            <option value="Night Event">Night Event</option>
-            <option value="Day Event">Day Event</option>
-            <option value="Live Music">Live Music</option>
-            <option value="Art&Culture">Art&Culture</option>
-            <option value="Sports Screening">Sports Screening</option>
-        </select>
-
-        <!-- submit button  -->
-        <br />
-        <div class="form-buttons">
-            <button type="submit" class="btn btn-primary share-ask">
-                Ask Around!
-            </button>
-        </div>
-    </form>
 </div>
 
 <?php include '../includes/footer.php' ?>
