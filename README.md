@@ -55,3 +55,6 @@ First, clone the repository from GitHub. Open your terminal or Git Bash and run 
 
    ```bash
    git clone https://github.com/Mwape-Kurete/ADDI.git
+  ```
+***
+
