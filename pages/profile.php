@@ -1,4 +1,7 @@
-<?php include '../includes/header.php'; ?>
+<?php include '../includes/header.php';
+
+
+?>
 
 <div class="row">
     <?php if (isset($_SESSION['username'])): ?>

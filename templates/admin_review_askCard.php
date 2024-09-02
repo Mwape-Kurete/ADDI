@@ -30,10 +30,13 @@ $result_asks = $conn->query($sql_asks);
             </div>
         </div>
         <hr id="dotted-div">
-        <div class="col-12 buttons">
-            <form method="POST" action="approve_ask.php" class="approved-denied-btns">
-                <input type="hidden" name="ask_id" value="<?php echo $ask['ask_id']; ?>">
+        <div class="col-12 d-flex justify-contnet-start align-items-center buttons">
+            <form method="POST" action="/ADDI/templates/approved.php" class="approved-denied-btns me-2">
+                <input type="hidden" name="AK_id" value="<?php echo $ask['ask_id']; ?>">
                 <button type="submit" name="action" value="approve" class="btn btn-primary btn-yes">Approve</button>
+            </form>
+            <form method="POST" action="/ADDI/templates/denied.php" class="approved-denied-btns">
+                <input type="hidden" name="ask_id" value="<?php echo $ask['ask_id']; ?>">
                 <button type="submit" name="action" value="deny" class="btn btn-primary btn-no">Deny</button>
             </form>
         </div>
