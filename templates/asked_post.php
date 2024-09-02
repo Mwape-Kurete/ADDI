@@ -32,7 +32,14 @@ $result_asks = $conn->query($sql_asks);
         </div>
     </div>
     <div class="col-10 show-thread mx-auto">
-        <button type="button" class="btn btn-primary view-answers-asks-btn"> View Answer Thread <i class="bi bi-chevron-compact-down"></i></button>
+        <a
+            name="view-ask-comments"
+            id="view-ask-comments"
+            class="btn btn-primary view-answers-asks-btn"
+            href="/ADDI/pages/single_post.php?ask_id=<?php echo $ask['ask_id'] ?>"
+            role="button">
+            View Answer Thread <i class="bi bi-chevron-compact-down"></i>
+        </a>
     </div>
 <?php endwhile; ?>
 

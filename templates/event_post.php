@@ -24,7 +24,7 @@ $result_events = $conn->query($sql_events);
                 <p class="event-ask-tag">#<span class="event-ask-type"><?php echo htmlspecialchars($event['category']); ?></span></p>
                 <div class="row lower-half">
                     <div class="col-11 meta-info">
-                        <a href="#" class="card-link posted-by">@<span>username</span></a>
+                        <a href="#" class="card-link posted-by">@<span><?php echo htmlspecialchars($event['username']) ?></span></a>
                         <small class="card-link date-time-asks">@<span class="time-asks"><?php echo htmlspecialchars($event['creation']); ?> </small>
                     </div>
                     <div class="col like">
@@ -36,7 +36,7 @@ $result_events = $conn->query($sql_events);
                 name="view-event-comments"
                 id="view-event-comments"
                 class="btn btn-primary view-event-comments-btn"
-                href="#"
+                href="/ADDI/pages/single_post.php?event_id=<?php echo $event['event_id'] ?>"
                 role="button">View Comments</a>
 
         </div>

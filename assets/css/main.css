@@ -525,6 +525,13 @@ form {
   margin: auto;
 }
 
+.comment-form-area {
+  max-height: fit-content;
+  border: none;
+  padding: 5px;
+  margin: auto;
+}
+
 input {
   font-family: "Montserrat Alternates", system-ui;
   font-weight: 400;
@@ -1010,10 +1017,6 @@ textarea {
 .single-pg-post-ask-card {
   border-radius: 5px;
   border: 2px solid black;
-}
-
-.single-post-comments {
-  overflow-y: scroll;
 }
 
 .user-pfp-name {
