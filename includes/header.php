@@ -40,38 +40,65 @@ print_r($_SESSION); // To check if session variables are present
             <div class="sidebar-heading" id="navHeader">
                 <h1 class="logo-txt">ADDI</h1>
             </div>
-            <div class="list-group list-group-flush sidebar-item-group">
-                <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
-                <a
-                    href="/ADDI/pages/ask.php"
-                    class="list-group-item list-group-item-action">Ask Around</a>
-                <a
-                    href="/ADDI/pages/share.php"
-                    class="list-group-item list-group-item-action">Share Event</a>
-                <a
-                    href="/ADDI/pages/profile.php"
-                    class="list-group-item list-group-item-action">Profile</a>
+            <?php if (isset($_SESSION['admin_id'])): ?>
+                <div class="list-group list-group-flush sidebar-item-group">
+                    <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
+                    <a
+                        href="/ADDI/pages/review_ques.php"
+                        class="list-group-item list-group-item-action">Review Posts</a>
 
-                <!--NAV BUTTONS-->
-                <div class="buttons-nav">
-                    <?php if (isset($_SESSION['username'])): ?>
-                        <form method="post" action="/ADDI/pages/logout.php" class="form-logout-btn">
-                            <button
-                                type="submit"
-                                class="btn btn-light list-group-item-action mb-3" id="btn-logout" name="logout-button">Logout</button>
-                        </form>
+                    <!--NAV BUTTONS-->
+                    <div class="buttons-nav">
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <form method="post" action="/ADDI/pages/logout.php" class="form-logout-btn">
+                                <button
+                                    type="submit"
+                                    class="btn btn-light list-group-item-action mb-3" id="btn-logout" name="logout-button">Logout</button>
+                            </form>
 
-                    <?php else: ?>
-                        <a
-                            href="/ADDI/pages/login.php"
-                            class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
-                        <a
-                            href="/ADDI/pages/register.php"
-                            class="btn btn-light list-group-item-action mb-3">Create Account</a>
-                    <?php endif; ?>
+                        <?php else: ?>
+                            <a
+                                href="/ADDI/pages/login.php"
+                                class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
+                        <?php endif; ?>
+                    </div>
+                    <!--/NAV BUTTONS-->
                 </div>
-                <!--/NAV BUTTONS-->
-            </div>
+            <?php else: ?>
+
+                <div class="list-group list-group-flush sidebar-item-group">
+                    <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
+                    <a
+                        href="/ADDI/pages/ask.php"
+                        class="list-group-item list-group-item-action">Ask Around</a>
+                    <a
+                        href="/ADDI/pages/share.php"
+                        class="list-group-item list-group-item-action">Share Event</a>
+                    <a
+                        href="/ADDI/pages/profile.php"
+                        class="list-group-item list-group-item-action">Profile</a>
+
+                    <!--NAV BUTTONS-->
+                    <div class="buttons-nav">
+                        <?php if (isset($_SESSION['username'])): ?>
+                            <form method="post" action="/ADDI/pages/logout.php" class="form-logout-btn">
+                                <button
+                                    type="submit"
+                                    class="btn btn-light list-group-item-action mb-3" id="btn-logout" name="logout-button">Logout</button>
+                            </form>
+
+                        <?php else: ?>
+                            <a
+                                href="/ADDI/pages/login.php"
+                                class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
+                            <a
+                                href="/ADDI/pages/register.php"
+                                class="btn btn-light list-group-item-action mb-3">Create Account</a>
+                        <?php endif; ?>
+                    </div>
+                    <!--/NAV BUTTONS-->
+                </div>
+            <?php endif; ?>
         </div>
         <!-- /#sidebar-wrapper -->
 

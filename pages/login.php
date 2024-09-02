@@ -11,50 +11,73 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password']; // Ensure this matches the form's name attribute
 
-    // Define the SQL query to fetch the user with the provided username
-    $sql = 'SELECT user_id, password FROM users WHERE username = ?';
-
-    // Prepare the SQL statement for execution
+    //handeling admin login 
+    $sql = 'SELECT admin_ID, password FROM admin WHERE username = ?';
     $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (!$stmt) {
-        // If preparation fails, show an error message
-        echo "Error preparing statement: " . $conn->error;
+    if ($result->num_rows > 0) {
+
+        $admin = $result->fetch_assoc();
+        if (password_verify($password, $admin['password'])) {
+
+            //upon successful admin login
+            $_SESSION['admin_id'] = $admin['admin_id'];
+            $_SESSION['username'] = $username;
+
+            header('Location: ../index.php?id=' .  $_SESSION['admin_id']);
+            exit();
+        }
     } else {
-        // Bind the value of the user's input into the SQL statement
-        $stmt->bind_param("s", $username); // "s" means one string parameter
+        // Define the SQL query to fetch the user with the provided username
+        $sql = 'SELECT user_id, password FROM users WHERE username = ?';
 
-        // Execute the prepared statement
-        $stmt->execute();
+        // Prepare the SQL statement for execution
+        $stmt = $conn->prepare($sql);
 
-        // Get the result of the query
-        $result = $stmt->get_result();
+        if (!$stmt) {
+            // If preparation fails, show an error message
+            echo "Error preparing statement: " . $conn->error;
+        } else {
+            // Bind the value of the user's input into the SQL statement
+            $stmt->bind_param("s", $username); // "s" means one string parameter
 
-        if ($result->num_rows > 0) {
-            // Fetch the associated row from the database
-            $user = $result->fetch_assoc();
+            // Execute the prepared statement
+            $stmt->execute();
 
-            // Verify the password
-            if (password_verify($password, $user['password'])) {
-                // Password is correct, start a session and store user ID
-                $_SESSION['user_id'] = $user['user_id'];
-                $_SESSION['username'] = $username;
+            // Get the result of the query
+            $result = $stmt->get_result();
 
-                // Redirect to the user's homepage or dashboard
-                header('Location: ../index.php?id=' .  $_SESSION['user_id']);
-                exit();
+            if ($result->num_rows > 0) {
+                // Fetch the associated row from the database
+                $user = $result->fetch_assoc();
+
+                // Verify the password
+                if (password_verify($password, $user['password'])) {
+                    // Password is correct, start a session and store user ID
+                    $_SESSION['user_id'] = $user['user_id'];
+                    $_SESSION['username'] = $username;
+
+                    // Redirect to the user's homepage or dashboard
+                    header('Location: ../index.php?id=' .  $_SESSION['user_id']);
+                    exit();
+                } else {
+                    // Password is incorrect
+                    echo "Invalid username or password.";
+                }
             } else {
-                // Password is incorrect
+                // No user found with the provided username
                 echo "Invalid username or password.";
             }
-        } else {
-            // No user found with the provided username
-            echo "Invalid username or password.";
-        }
 
-        // Close the statement
-        $stmt->close();
+            // Close the statement
+            $stmt->close();
+        }
     }
+
+
 
     // Close the database connection
     $conn->close();

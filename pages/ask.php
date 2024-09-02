@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // Include the database connection file
 require '../includes/db.php';
 
@@ -7,20 +8,21 @@ require '../includes/db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Fetch and sanitize the form inputs
-    $title = $conn->real_escape_string($_POST['question_title']);
-    $content = $conn->real_escape_string($_POST['question_content']);
-    $category = $conn->real_escape_string($_POST['question_category']);
+    $user_id = $_SESSION['user_id'];
+    $title = $_POST['title'];
+    $details = $_POST['details'];
+    $category = $_POST['category'];
 
     // Assuming these values are provided through a form or other sources
     $user_id = $_SESSION['user_id']; // This should come from the logged-in user's session, e.g., $_SESSION['user_id']
     $approved = 0; // 0 indicates the question is not yet approved
 
     // Validation (You can add more validation as needed)
-    if (empty($title) || empty($content) || empty($category)) {
+    if (empty($title) || empty($details) || empty($category)) {
         echo "All fields are required!";
     } else {
         // Prepare the SQL query to insert the ask (question) into the database
-        $sql = "INSERT INTO questions (user_id, question_title, details, category, approved, created_at) 
+        $sql = "INSERT INTO ask (user_id, title, details, category, approved, creation) 
                 VALUES (?, ?, ?, ?, ?, current_timestamp())";
 
         $stmt = $conn->prepare($sql);
@@ -30,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Failed to prepare statement: " . $conn->error;
         } else {
             // Bind parameters to the SQL query
-            $stmt->bind_param('isssi', $user_id, $title, $content, $category, $approved);
+            $stmt->bind_param('isssi', $user_id, $title, $details, $category, $approved);
 
             // Execute the query
             if ($stmt->execute()) {
@@ -52,11 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 <?php include '../includes/header.php'; ?>
+
 <div class="row">
     <?php if (isset($_SESSION['username'])): ?>
         <div class="col-10 mx-auto">
             <!--ask question Fom START-->
-            <form method="POST" action="" class="asks">
+            <form method="POST" action="ask.php" class="asks">
                 <h2 class="form-header mx-auto">Ask Around</h2>
                 <!-- base info -->
                 <h6>Ask Title:</h6>
@@ -64,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input
                         type="text"
                         class="form-control"
-                        name="question_title"
+                        name="title"
                         id="questionTitle"
                         placeholder="" />
                     <label for="formId1">My Ask is...</label>
@@ -76,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <textarea
                         class="form-control"
                         placeholder="Leave a comment here"
-                        name="question_content"
+                        name="details"
                         id="questionDetails"
                         style="height: 170px"></textarea>
                     <label for="floatingTextarea2">Elaborate on your ask here...</label>
@@ -84,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <!-- Tags -->
                 <br />
-                <select class="form-select" name="question_category" aria-label="Default select example">
+                <select class="form-select" name="category" aria-label="Default select example">
                     <option selected>Post Tags:</option>
                     <option value="Outdoor">Outdoor</option>
                     <option value="Indoor">Indoor</option>

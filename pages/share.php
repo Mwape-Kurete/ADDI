@@ -1,10 +1,65 @@
+<?php
+
+session_start();
+// Include the database connection file
+require '../includes/db.php';
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Fetch and sanitize the form inputs
+    $user_id = $_SESSION['user_id'];
+    $title = $_POST['title'];
+    $location = $_POST['location'];
+    $event_date = $_POST['event_date'];
+    $details = $_POST['details'];
+    $category = $_POST['category'];
+
+    $approved = 0; // 0 indicates the question is not yet approved
+
+    // Validation (You can add more validation as needed)
+    if (empty($title) || empty($location) || empty($event_date) || empty($details) || empty($category)) {
+        echo "All fields are required!";
+    } else {
+        // Prepare the SQL query to insert the ask (question) into the database
+        $sql = "INSERT INTO events (user_id, title, location, event_date, details, category, approved, creation) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, current_timestamp())";
+
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            // Handle errors in preparing the SQL statement
+            echo "Failed to prepare statement: " . $conn->error;
+        } else {
+            // Bind parameters to the SQL query
+            $stmt->bind_param('isssssi', $user_id, $title, $location, $event_date, $details, $category, $approved);
+
+            // Execute the query
+            if ($stmt->execute()) {
+                // Redirect or display a success message
+                echo "Your event has been sent for review!";
+            } else {
+                // Handle errors in executing the SQL query
+                echo "Failed to send your event: " . $stmt->error;
+            }
+
+            // Close the statement
+            $stmt->close();
+        }
+    }
+
+    // Close the database connection
+    $conn->close();
+}
+?>
+
 <?php include '../includes/header.php'; ?>
 
 <div class="row">
     <?php if (isset($_SESSION['username'])): ?>
         <div class="col-10 postEventForm mx-auto">
             <!--Share Event Fom START-->
-            <form action="" class="share">
+            <form method="POST" action="share.php" class="share">
                 <h2 class="form-header mx-auto">Create An Event</h2>
                 <!-- base info -->
                 <h6>Ask Title:</h6>
@@ -12,10 +67,10 @@
                     <input
                         type="text"
                         class="form-control"
-                        name="formId1"
-                        id="formId1"
+                        name="title"
+                        id="event_title"
                         placeholder="" />
-                    <label for="formId1">Event Name</label>
+                    <label for="event_title">Event Name</label>
                 </div>
 
                 <h6>Add Event Location:</h6>
@@ -23,16 +78,17 @@
                     <input
                         type="text"
                         class="form-control"
-                        name="formId1"
-                        id="formId1"
+                        name="location"
+                        id="event_loc"
                         placeholder="" />
-                    <label for="formId1">Event Location</label>
+                    <label for="event_loc">Event Location</label>
                 </div>
 
                 <div class="form-group py-3">
                     <h6>Select Date and Time</h6>
                     <input
                         type="datetime-local"
+                        name="event_date"
                         class="form-control"
                         id="datetimeInput" />
                 </div>
@@ -42,15 +98,16 @@
                 <div class="form-floating">
                     <textarea
                         class="form-control"
+                        name="details"
                         placeholder="Leave a comment here"
-                        id="floatingTextarea2"
+                        id="event_details"
                         style="height: 170px"></textarea>
-                    <label for="floatingTextarea2">Elaborate on event details here...</label>
+                    <label for="event_details">Elaborate on event details here...</label>
                 </div>
 
                 <!-- Tags -->
                 <br />
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" name="category" aria-label="Default select example">
                     <option selected>Event Tags:</option>
                     <option value="1">Outdoor</option>
                     <option value="2">Indoor</option>
@@ -58,7 +115,7 @@
                     <option value="4">Day Event</option>
                     <option value="5">Live Music</option>
                     <option value="6">Art & Culture</option>
-                    <option value="3">Festival</option>
+                    <option value="7">Festival</option>
                 </select>
 
                 <!-- submit button  -->

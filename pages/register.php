@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (strlen($password) < 8) {
-        echo 'passwoerd needs to be 8 characters long.';
+        echo 'password needs to be 8 characters long.';
         exit();
     }
 
