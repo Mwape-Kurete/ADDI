@@ -4,7 +4,7 @@ require '../includes/db.php'; // Ensure that the db.php file (containing the con
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Fetching values of submitted form and setting them as PHP variables
-    $username = $_POST['fullname'];
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
@@ -102,7 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Redirect the user after they have successfully created an account  and store their id in session storage
         $_SESSION['user_id'] = $user_id;
-        header('Location: ../index.php?id=' . $user_id);
+        $_SESSION['username'] = $username;
+
+        header('Location: ../index.php?id=' .  $_SESSION['user_id']);
 
         exit();
     } catch (Exception $e) {

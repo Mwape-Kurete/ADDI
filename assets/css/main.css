@@ -518,6 +518,13 @@ form {
   margin: auto;
 }
 
+.approved-denied-btns {
+  max-height: fit-content;
+  border: none;
+  padding: 5px;
+  margin: auto;
+}
+
 input {
   font-family: "Montserrat Alternates", system-ui;
   font-weight: 400;

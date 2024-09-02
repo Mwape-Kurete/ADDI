@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password']; // Ensure this matches the form's name attribute
 
     //handeling admin login 
-    $sql = 'SELECT admin_ID, password FROM admin WHERE username = ?';
+    $sql = 'SELECT admin_id, password FROM admins WHERE username = ?';
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -29,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             header('Location: ../index.php?id=' .  $_SESSION['admin_id']);
             exit();
+        } else {
+            echo "Invalid username or password.";
         }
     } else {
         // Define the SQL query to fetch the user with the provided username
