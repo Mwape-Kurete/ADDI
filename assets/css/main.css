@@ -506,6 +506,12 @@ h5.username-display {
   padding: 5px;
 }
 
+a.ig-handle {
+  color: rgb(175, 117, 194) !important;
+  font-family: "Montserrat Alternates", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
 /*PROFILE PAGE */
 
 /*FORMS STYLING*/

@@ -37,7 +37,7 @@ if (isset($_SESSION['user_id'])) {
             <hr>
             <div class="follow-me">
                 <h6>follow me on ig:</h6>
-                <a href="https://www.instagram.com/<?php echo htmlspecialchars($result['website']) ?>/" target="_blank">@<?php echo htmlspecialchars($result['website']) ?></a>
+                <a href="https://www.instagram.com/<?php echo htmlspecialchars($result['website']) ?>/" class="ig-handle" target="_blank">@<?php echo htmlspecialchars($result['website']) ?></a>
             </div>
         </div>
     <?php endwhile;
