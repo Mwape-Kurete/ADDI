@@ -1,6 +1,7 @@
 <?php
-
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // Include the database connection file
 require '../includes/db.php';
 
@@ -37,10 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Execute the query
             if ($stmt->execute()) {
                 // Redirect or display a success message
-                echo "Your ask has been sent for review!";
+                echo <<<HTML
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Your ask has been sent for review!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                HTML;
             } else {
                 // Handle errors in executing the SQL query
-                echo "Failed to post your ask: " . $stmt->error;
+                $errorMsg = htmlspecialchars($stmt->error); // Sanitize error message
+                echo <<<HTML
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Failed to post your ask: $errorMsg
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                HTML;
             }
 
             // Close the statement

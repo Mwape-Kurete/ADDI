@@ -1,14 +1,13 @@
 <?php
 require 'includes/db.php'; // Include your database connection
 
-// Fetch pending events along with the name of the user who posted it  username
+// Fetch pending events along with the name of the user who posted it
 $sql_events = "SELECT e.*, u.username 
              FROM events e 
              JOIN users u ON e.user_id = u.user_id 
              WHERE e.approved = 1";
 $result_events = $conn->query($sql_events);
 ?>
-
 
 <!--START OF EVENT CARD-->
 <?php while ($event = $result_events->fetch_assoc()): ?>
@@ -29,12 +28,16 @@ $result_events = $conn->query($sql_events);
                         <small class="card-link date-time-asks">@<span class="time-asks"><?php echo htmlspecialchars($event['creation']); ?> </small>
                     </div>
                     <div class="col like form-like-btn-container">
-                        <form method="post" action="/ADDI/includes/saved.php" class="form-like-btn">
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-                            <input type="hidden" name="item_type" value="ask"> <!-- or "event" depending on context -->
-                            <input type="hidden" name="item_id" value="<?php echo $ask['ask_id']; ?>"> <!-- or $event['event_id'] -->
-                            <button type="submit" class="like-btn btn btn-light"><i class="bi bi-heart"></i></button>
-                        </form>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <form method="post" action="/ADDI/includes/saved.php" class="form-like-btn">
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                <input type="hidden" name="item_type" value="event">
+                                <input type="hidden" name="item_id" value="<?php echo $event['event_id']; ?>">
+                                <button type="submit" class="like-btn btn btn-light"><i class="bi bi-heart"></i></button>
+                            </form>
+                        <?php else: ?>
+                            <span class="text-muted">Login to like</span>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -44,9 +47,7 @@ $result_events = $conn->query($sql_events);
                 class="btn btn-primary view-event-comments-btn"
                 href="/ADDI/pages/single_post.php?event_id=<?php echo $event['event_id'] ?>"
                 role="button">View Comments</a>
-
         </div>
     </div>
 <?php endwhile; ?>
-
 <!--END OF EVENT CARD-->

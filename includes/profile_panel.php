@@ -1,41 +1,64 @@
 <?php
-require '../includes/db.php';
+require __DIR__ . '/../includes/db.php';
 
-$current_id = $_SESSION['user_id'];
+// Check if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    $current_id = $_SESSION['user_id'];
 
-$sql = "SELECT p.*, u.username 
+    $sql = "SELECT p.*, u.username 
              FROM profiles p 
              JOIN users u ON p.user_id = u.user_id 
              WHERE p.user_id = ?";
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $current_id);
-$stmt->execute();
-$result_profile = $stmt->get_result();
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $current_id);
+    $stmt->execute();
+    $result_profile = $stmt->get_result();
 
-
-?>
-
-
-<!-- profile Panel -->
-<?php while ($result = $result_profile->fetch_assoc()): ?>
+    while ($result = $result_profile->fetch_assoc()): ?>
+        <!-- profile Panel -->
+        <div class="profile-panel" id="profilePanel-wrapper">
+            <div class="profilePanel-heading" id="profHeader">
+                <div class="profile-photo">
+                    <img
+                        src="../uploads/<?php echo htmlspecialchars($result['profile_pic']) ?>"
+                        alt="temp profile photo"
+                        style="max-width: 150px; max-height: 150px; border-radius: 5px" />
+                </div>
+                <h6 class="username-handle">@<?php echo htmlspecialchars($result['username']) ?></h6>
+            </div>
+            <hr>
+            <div class="bio-content">
+                <h6>Bio:</h6>
+                <p>
+                    <?php echo htmlspecialchars($result['bio']) ?>
+                </p>
+            </div>
+            <hr>
+            <div class="follow-me">
+                <h6>follow me on ig:</h6>
+                <a href="https://www.instagram.com/<?php echo htmlspecialchars($result['website']) ?>/" target="_blank">@<?php echo htmlspecialchars($result['website']) ?></a>
+            </div>
+        </div>
+    <?php endwhile;
+} else { ?>
+    <!-- Alternative content for users who are not logged in -->
     <div class="profile-panel" id="profilePanel-wrapper">
         <div class="profilePanel-heading" id="profHeader">
-            <div class="profile-photo">
-                <img
-                    src="../uploads/<?php echo htmlspecialchars($result['profile_pic']) ?>"
-                    alt="temp profile photo"
-                    style="max-width: 150px; max-height: 150px; border-radius: 5px" />
-            </div>
-            <h6 class="username-handle">@<?php echo htmlspecialchars($result['username']) ?></h6>
+            <h6 class="text-center">Welcome to ADDI!</h6>
         </div>
         <hr>
-        <div class="bio-content">
-            <h6>Bio:</h6>
-            <p>
-                <?php echo htmlspecialchars($result['bio']) ?>
-            </p>
+        <div class="bio-content text-center">
+            <div class="login-notice">
+                <p>Looks like you aren't logged in. Log in to view your profile panel</p>
+            </div>
+            <div class="button-for-login">
+                <a
+                    href="/ADDI/pages/login.php"
+                    class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
+            </div>
         </div>
     </div>
-<?php endwhile; ?>
+<?php }
+?>
 <!-- /#profilePanel-wrapper -->

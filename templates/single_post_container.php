@@ -18,6 +18,7 @@ if ($event_id > 0) {
 
 // Handle form submission for posting a comment
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['content'])) {
+
     // Retrieve and sanitize form data
     $user_id = intval($_SESSION['user_id']);
     $content = trim($_POST['content']);

@@ -1,7 +1,7 @@
 <?php
-session_start();
-print_r($_SESSION);
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require '../includes/db.php'; // Include the database connection
 
 // Check if the request method is POST, which indicates the form has been submitted
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['admin_id'] = $admin['admin_id'];
             $_SESSION['username'] = $username;
 
-            header('Location: ../index.php?id=' .  $_SESSION['admin_id']);
+            header('Location: /ADDI/pages/review_ques.php?id=' .  $_SESSION['admin_id']);
             exit();
         } else {
             echo "Invalid username or password.";
@@ -67,11 +67,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     exit();
                 } else {
                     // Password is incorrect
-                    echo "Invalid username or password.";
+                    echo <<<HTML
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     invalid username or password
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+                 HTML;
                 }
             } else {
                 // No user found with the provided username
-                echo "Invalid username or password.";
+                echo <<<HTML
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     user does not  exist
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+                 HTML;
             }
 
             // Close the statement

@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require '../includes/db.php'; // Ensure that the db.php file (containing the connection) is included
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -1,7 +1,4 @@
-<?php include '../includes/header.php';
-
-
-?>
+<?php include '../includes/header.php'; ?>
 
 <div class="row">
     <?php if (isset($_SESSION['username'])): ?>
@@ -14,7 +11,7 @@
                 <?php include '../templates/user_ask_card.php'; ?>
             </div>
             <div class="profile-content-saved tab-content" id="saved-content" style="display: none;">
-
+                <?php include '../templates/user_saved.php'; ?>
             </div>
             <div class="profile-content-pending tab-content" id="pending-content" style="display: none;">
                 <?php include '../templates/user_pending_asks.php'; ?>

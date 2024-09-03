@@ -5,7 +5,7 @@
         <?php include '../templates/single_post_container.php'; ?>
     </div>
     <div class="col activityPanel">
-        <?php include '../includes/activity_panel.php'; ?>
+        <?php include '../includes/profile_panel.php' ?>
     </div>
 </div>
 

@@ -12,35 +12,22 @@ if ($event_id > 0) {
 }
 
 // Fetch details based on parent type (event or ask)
-if ($parent_type === 'event') {
-    $sql_comments = "SELECT e.*, u.username, p.profile_pic 
-            FROM events e 
-            JOIN users u ON e.user_id = u.user_id 
-            JOIN profiles p ON u.user_id = p.user_id 
-            WHERE e.event_id = ?";
-} else {
-    $sql_comments = "SELECT a.*, u.username, p.profile_pic 
-            FROM ask a 
-            JOIN users u ON a.user_id = u.user_id 
-            JOIN profiles p ON u.user_id = p.user_id 
-            WHERE a.ask_id = ?";
-}
+$sql_comments = "SELECT c.content, u.username, c.creation
+                 FROM comments c
+                 JOIN users u ON c.user_id = u.user_id
+                 WHERE c.parent_id = ? AND c.parent_type = ?";
 
+$stmt_comments = $conn->prepare($sql_comments);
 
-$stmt = $conn->prepare($sql);
-
-if (!$stmt) {
+if (!$stmt_comments) {
     //debugging 
     echo "error preparing statement: " . $conn->error;
     exit();
 }
 
-$stmt_comments = $conn->prepare($sql_comments);
-$stmt_comments->bind_param("i", $parent_id);
+$stmt_comments->bind_param("is", $parent_id, $parent_type);
 $stmt_comments->execute();
 $result_comments = $stmt_comments->get_result();
-
-
 
 while ($comment = $result_comments->fetch_assoc()): ?>
 

@@ -1,15 +1,13 @@
 <?php
 require __DIR__ . '/../includes/db.php'; // Include your database connection
 
-
-// Fetch pending asks along with the name of the user who posted it  username
+// Fetch pending asks along with the name of the user who posted it
 $sql_asks = "SELECT a.*, u.username 
              FROM ask a 
              JOIN users u ON a.user_id = u.user_id 
              WHERE a.approved = 1";
 $result_asks = $conn->query($sql_asks);
 ?>
-
 
 <!--START OF ASKED POST/CARD-->
 <?php while ($ask = $result_asks->fetch_assoc()): ?>
@@ -28,12 +26,16 @@ $result_asks = $conn->query($sql_asks);
                     </div>
 
                     <div class="col like form-like-btn-container">
-                        <form method="post" action="/ADDI/includes/saved.php" class="form-like-btn">
-                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-                            <input type="hidden" name="item_type" value="ask">
-                            <input type="hidden" name="item_id" value="<?php echo $ask['ask_id']; ?>">
-                            <button type="submit" class="like-btn btn btn-light"><i class="bi bi-heart"></i></button>
-                        </form>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <form method="post" action="/ADDI/includes/saved.php" class="form-like-btn">
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                                <input type="hidden" name="item_type" value="ask">
+                                <input type="hidden" name="item_id" value="<?php echo $ask['ask_id']; ?>">
+                                <button type="submit" class="like-btn btn btn-light"><i class="bi bi-heart"></i></button>
+                            </form>
+                        <?php else: ?>
+                            <span class="text-muted">Login to like</span>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -50,5 +52,4 @@ $result_asks = $conn->query($sql_asks);
         </a>
     </div>
 <?php endwhile; ?>
-
 <!--END OF ASKED POST/CARD-->

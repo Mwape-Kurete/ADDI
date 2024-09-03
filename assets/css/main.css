@@ -442,6 +442,12 @@ option {
   margin-top: 50%;
 }
 
+.list-group > .active {
+  background-color: rgb(175, 117, 194) !important;
+  color: white !important;
+  font-weight: bolder;
+}
+
 /*Activity Panel*/
 #activityPanel-wrapper {
   min-height: 100vh;
@@ -1193,6 +1199,10 @@ hr.dotted {
   font-weight: 700;
   font-size: larger;
   font-style: normal;
+}
+
+footer {
+  margin-top: 50px;
 }
 /*END OF ALL STYLING*/
 /* 

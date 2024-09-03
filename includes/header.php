@@ -1,6 +1,10 @@
 <?php
-session_start();
-print_r($_SESSION); // To check if session variables are present
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Get the current page name
+$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@ print_r($_SESSION); // To check if session variables are present
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Fascinate+Inline&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Fascinate+Inline&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet" />
 
     <!--/Google Fonts-->
@@ -42,14 +46,13 @@ print_r($_SESSION); // To check if session variables are present
             </div>
             <?php if (isset($_SESSION['admin_id'])): ?>
                 <div class="list-group list-group-flush sidebar-item-group">
-                    <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
-                    <a
-                        href="/ADDI/pages/review_ques.php"
-                        class="list-group-item list-group-item-action">Review Posts</a>
+                    <a href="/ADDI/pages/review_ques.php"
+                        class="list-group-item list-group-item-action <?php echo $current_page == 'review_ques.php' ? 'active' : ''; ?>"
+                        style="background-color: rgba(175, 117, 194, 1);">Review Posts</a>
 
                     <!--NAV BUTTONS-->
                     <div class="buttons-nav">
-                        <?php if (isset($_SESSION['username'])): ?>
+                        <?php if (isset($_SESSION['admin_id'])): ?>
                             <form method="post" action="/ADDI/pages/logout.php" class="form-logout-btn">
                                 <button
                                     type="submit"
@@ -57,26 +60,23 @@ print_r($_SESSION); // To check if session variables are present
                             </form>
 
                         <?php else: ?>
-                            <a
-                                href="/ADDI/pages/login.php"
-                                class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
+                            <a href="/ADDI/pages/login.php"
+                                class="btn btn-light list-group-item-action mb-3 <?php echo $current_page == 'login.php' ? 'active' : ''; ?>"
+                                id="btn-login">Login</a>
                         <?php endif; ?>
                     </div>
                     <!--/NAV BUTTONS-->
                 </div>
             <?php else: ?>
-
                 <div class="list-group list-group-flush sidebar-item-group">
-                    <a href="/ADDI/index.php" class="list-group-item list-group-item-action">Home</a>
-                    <a
-                        href="/ADDI/pages/ask.php"
-                        class="list-group-item list-group-item-action">Ask Around</a>
-                    <a
-                        href="/ADDI/pages/share.php"
-                        class="list-group-item list-group-item-action">Share Event</a>
-                    <a
-                        href="/ADDI/pages/profile.php"
-                        class="list-group-item list-group-item-action">Profile</a>
+                    <a href="/ADDI/index.php"
+                        class="list-group-item list-group-item-action <?php echo $current_page == 'index.php' ? 'active' : ''; ?>">Home</a>
+                    <a href="/ADDI/pages/ask.php"
+                        class="list-group-item list-group-item-action <?php echo $current_page == 'ask.php' ? 'active' : ''; ?>">Ask Around</a>
+                    <a href="/ADDI/pages/share.php"
+                        class="list-group-item list-group-item-action <?php echo $current_page == 'share.php' ? 'active' : ''; ?>">Share Event</a>
+                    <a href="/ADDI/pages/profile.php"
+                        class="list-group-item list-group-item-action <?php echo $current_page == 'profile.php' ? 'active' : ''; ?>">Profile</a>
 
                     <!--NAV BUTTONS-->
                     <div class="buttons-nav">
@@ -86,14 +86,12 @@ print_r($_SESSION); // To check if session variables are present
                                     type="submit"
                                     class="btn btn-light list-group-item-action mb-3" id="btn-logout" name="logout-button">Logout</button>
                             </form>
-
                         <?php else: ?>
-                            <a
-                                href="/ADDI/pages/login.php"
-                                class="btn btn-light list-group-item-action mb-3" id="btn-login">Login</a>
-                            <a
-                                href="/ADDI/pages/register.php"
-                                class="btn btn-light list-group-item-action mb-3">Create Account</a>
+                            <a href="/ADDI/pages/login.php"
+                                class="btn btn-light list-group-item-action mb-3 <?php echo $current_page == 'login.php' ? 'active' : ''; ?>"
+                                id="btn-login">Login</a>
+                            <a href="/ADDI/pages/register.php"
+                                class="btn btn-light list-group-item-action mb-3 <?php echo $current_page == 'register.php' ? 'active' : ''; ?>">Create Account</a>
                         <?php endif; ?>
                     </div>
                     <!--/NAV BUTTONS-->
@@ -105,6 +103,3 @@ print_r($_SESSION); // To check if session variables are present
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-</body>
-
-</html>
