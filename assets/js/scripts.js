@@ -27,4 +27,11 @@ $(document).ready(function () {
       visibility: "visible",
     });
   });
+
+  document.querySelectorAll(".like-btn").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      this.closest("form").submit();
+    });
+  });
 });

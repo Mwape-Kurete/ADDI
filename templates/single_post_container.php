@@ -58,13 +58,21 @@ if ($parent_type === 'event') {
             WHERE e.event_id = ?";
 } else {
     $sql = "SELECT a.*, u.username, p.profile_pic 
-            FROM asks a 
+            FROM ask a 
             JOIN users u ON a.user_id = u.user_id 
             JOIN profiles p ON u.user_id = p.user_id 
             WHERE a.ask_id = ?";
 }
 
+
 $stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    //debugging 
+    echo "error preparing statement: " . $conn->error;
+    exit();
+}
+
 $stmt->bind_param("i", $parent_id);
 $stmt->execute();
 $parent_data = $stmt->get_result()->fetch_assoc();

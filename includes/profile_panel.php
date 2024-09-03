@@ -25,7 +25,7 @@ $result_profile = $stmt->get_result();
                 <img
                     src="../uploads/<?php echo htmlspecialchars($result['profile_pic']) ?>"
                     alt="temp profile photo"
-                    style="max-width: 150px; max-height: 150px; border-radius: 50%" />
+                    style="max-width: 150px; max-height: 150px; border-radius: 5px" />
             </div>
             <h6 class="username-handle">@<?php echo htmlspecialchars($result['username']) ?></h6>
         </div>

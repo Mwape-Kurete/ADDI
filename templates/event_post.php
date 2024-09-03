@@ -22,13 +22,19 @@ $result_events = $conn->query($sql_events);
                 <p>When: <strong class="date-of-event"><?php echo htmlspecialchars($event['event_date']); ?></strong></p>
                 <p>Where: <strong class="location-of-event"><?php echo htmlspecialchars($event['location']); ?></strong></p>
                 <p class="event-ask-tag">#<span class="event-ask-type"><?php echo htmlspecialchars($event['category']); ?></span></p>
-                <div class="row lower-half">
-                    <div class="col-11 meta-info">
+
+                <div class="row lower-half d-flex justify-content-between align-items-center">
+                    <div class="col-6 meta-info">
                         <a href="#" class="card-link posted-by">@<span><?php echo htmlspecialchars($event['username']) ?></span></a>
                         <small class="card-link date-time-asks">@<span class="time-asks"><?php echo htmlspecialchars($event['creation']); ?> </small>
                     </div>
-                    <div class="col like">
-                        <span class="like-btn"><i class="bi bi-heart"></i></span>
+                    <div class="col like form-like-btn-container">
+                        <form method="post" action="/ADDI/includes/saved.php" class="form-like-btn">
+                            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+                            <input type="hidden" name="item_type" value="ask"> <!-- or "event" depending on context -->
+                            <input type="hidden" name="item_id" value="<?php echo $ask['ask_id']; ?>"> <!-- or $event['event_id'] -->
+                            <button type="submit" class="like-btn btn btn-light"><i class="bi bi-heart"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

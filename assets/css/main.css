@@ -532,6 +532,24 @@ form {
   margin: auto;
 }
 
+.form-like-btn-container {
+  margin-top: -50px;
+  margin-left: 250px;
+  margin-bottom: -50px;
+}
+
+.form-like-btn {
+  max-height: fit-content;
+  border: none;
+  margin: auto;
+}
+
+.like-btn {
+  padding: 5px;
+  border: none;
+  background-color: none;
+}
+
 input {
   font-family: "Montserrat Alternates", system-ui;
   font-weight: 400;
